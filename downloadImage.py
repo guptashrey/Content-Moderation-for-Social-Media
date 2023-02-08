@@ -4,12 +4,13 @@ import os
 
 
 def download_image(url, name, path,path_failurls):
+    name=name.split("?")[0]
     if os.path.exists(os.path.join(path, name)):
         print(f"Image '{name}' already exists, skipping.")
         return
 
     try:
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=20)
         file_path = os.path.join(path, name)
         with open(file_path, "wb") as f:
             f.write(response.content)
