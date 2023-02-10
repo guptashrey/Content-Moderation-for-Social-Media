@@ -12,7 +12,7 @@ def optimize_image(image_path):
         print(f"Failed to download image '{image_path}': {e}")
         os.remove(image_path)
 
-folder = '/Users/shuai/PycharmProjects/Content-Moderation-for-Social-Media/images/neutral'
+folder = '/Users/shuai/Downloads/nsfw'
 for filename in os.listdir(folder):
     image_path = os.path.join(folder, filename)
     optimize_image(image_path)
