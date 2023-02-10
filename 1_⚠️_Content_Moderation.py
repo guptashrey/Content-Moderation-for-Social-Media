@@ -19,16 +19,22 @@ def run_ui():
 
     image_upload = st.file_uploader("Upload an image", type="jpg")
 
+    col1, col2, col3 = st.columns((3,3,3))
+
     if image_upload is not None:
         image = Image.open(image_upload)
-        st.image(image, caption='Uploaded Image.', use_column_width=True)
-        st.write("")
-        st.write("Just a second...")
+        with col2:
+            st.image(image, caption='Uploaded Image.', width=500)
+            st.write("")
+
         labels = predict(image_upload)
 
-        # print out the top 5 prediction labels with scores
-        for i in labels:
-            st.write("Prediction (index, name)", i[0], ",   Score: ", i[1])
+        col4, col5, col6, col7, col8, col9 = st.columns((3,3,3,3,3,3))
+        with col6:
+            st.metric(label=labels[0][0].upper() + " " + "Content Score", value=format(labels[0][1]*100, "0.01f")+"%")
+
+        with col8:
+            st.metric(label=labels[1][0].upper() + " " + "Content Score", value=format(labels[1][1]*100, "0.01f")+"%")
 
 if __name__ == "__main__":
     run_ui()
