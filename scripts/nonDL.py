@@ -1,9 +1,10 @@
 from sklearn.metrics import accuracy_score
+from sklearn.ensemble import RandomForestClassifier
+
 import numpy as np
 import torch
 import torchvision
 import torchvision.transforms as transforms
-from sklearn.ensemble import RandomForestClassifier
 import joblib
 import warnings
 

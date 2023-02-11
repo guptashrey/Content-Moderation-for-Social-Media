@@ -43,7 +43,7 @@ setup(
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=required,
     # entry_points={
-    #     "console_scripts": ["Content-Moderation-for-Social-Media = Content-Moderation-for-Social-Media.__main__:main"]
+    #     "console_scripts": ["Content_Moderation_for_Social_Media = main"]
     # },
     # extras_require={"test": read_requirements("requirements-test.txt")},
 )
