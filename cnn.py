@@ -11,6 +11,9 @@ import os
 import copy
 from torch.cuda import get_device_name
 from torch import tensor
+import warnings
+warnings.filterwarnings("ignore")
+
 
 if __name__ == '__main__':
 
