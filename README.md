@@ -2,7 +2,7 @@
 Our project focuses on providing a content filter solution for social news. The aim is to classify news content images into three categories: violence, porn, and normal.
 
 ## Model Training
-We have trained a machine learning model to accurately identify and categorize news content based on its content. The model is trained on a large dataset of Social Media images and uses advanced techniques to accurately classify each images.
+We have trained a machine learning model to accurately identify and categorize news content based on its images. The model is trained on a large dataset of Social Media images and uses advanced techniques to accurately classify each images.
 
 ## Features
 * Accurate classification of news content into violence, porn, and normal categories.
