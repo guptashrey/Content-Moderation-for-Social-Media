@@ -23,9 +23,9 @@ def download_image(url, name, path,path_failurls):
 
 
 if __name__ == '__main__':
-    path = "../images/normal"
+    path = "../../images/normal"
     path_failurls = "./failed_downloads.txt"
-    path_image_url = "../Data/urls_neutral.txt"
+    path_image_url = "./urls_neutral.txt"
 
     failed_downloads = set()
 

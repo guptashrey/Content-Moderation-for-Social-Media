@@ -76,7 +76,9 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
-
+.build
+.Content_Moderation_for_Social_Media*
+.dist
 # IPython
 profile_default/
 ipython_config.py
