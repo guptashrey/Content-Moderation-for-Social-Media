@@ -22,7 +22,7 @@ if __name__ == '__main__':
                              std=[0.229, 0.224, 0.225])
     ])
 
-    image_dataset = torchvision.datasets.ImageFolder(root='../images',
+    image_dataset = torchvision.datasets.ImageFolder(root='../data/outputs',
                                                      transform=data_transform)
 
     # Split the data into training and validation sets
@@ -72,7 +72,7 @@ if __name__ == '__main__':
     best_model = models[np.argmax(results)]
     print("The best model is", type(best_model))
     # save the model
-    path = '../model/sklearn_best_model.pkl'
+    path = '../models/sklearn_best_model.pkl'
     joblib.dump(best_model, path)
     # load the model from disk
     loaded_model = joblib.load(path)
