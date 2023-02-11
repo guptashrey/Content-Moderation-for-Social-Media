@@ -15,7 +15,6 @@ We have trained a machine learning model to accurately identify and categorize s
 ```
 |-- Data
 |   |-- urls_neutral.txt
-|   |-- urls_nsfw.txt
 |   `-- urls_porn.txt
 |-- ScriptData
 |   |-- downloadImage.py
