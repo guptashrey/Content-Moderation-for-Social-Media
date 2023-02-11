@@ -12,11 +12,10 @@ import copy
 from torch.cuda import get_device_name
 from torch import tensor
 import warnings
+
 warnings.filterwarnings("ignore")
 
-
 if __name__ == '__main__':
-
 
     # Load the data using ImageFolder
     data_transform = transforms.Compose([
@@ -28,7 +27,7 @@ if __name__ == '__main__':
                              std=[0.229, 0.224, 0.225])
     ])
 
-    image_dataset = torchvision.datasets.ImageFolder(root='./images',
+    image_dataset = torchvision.datasets.ImageFolder(root='../images',
                                                      transform=data_transform)
 
     # Split the data into training and validation sets
@@ -148,7 +147,7 @@ if __name__ == '__main__':
                 if phase == 'val' and epoch_acc > best_acc:
                     best_acc = epoch_acc
                     best_model_wts = copy.deepcopy(model.state_dict())
-                    torch.save(best_model_wts, './model/best_model.pt')
+                    torch.save(best_model_wts, '../model/best_model.pt')
 
         time_elapsed = time.time() - since
         print('Training complete in {:.0f}m {:.0f}s'.format(
