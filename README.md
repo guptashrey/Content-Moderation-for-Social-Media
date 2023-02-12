@@ -15,7 +15,6 @@ We have trained a machine learning model to accurately identify and categorize s
 ```
 ├── README.md               <- description of project and how to set up and run it
 ├── requirements.txt        <- requirements file to document dependencies
-├── Makefile [OPTIONAL]     <- setup and run project from command line
 ├── setup.py                <- script to set up project (get data, build features, train model)
 ├── main.py [or main.ipynb] <- main script/notebook to run project / user interface
 ├── scripts                 <- directory for pipeline scripts or utility scripts
