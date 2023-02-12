@@ -83,7 +83,7 @@ def train_predict_dl_model(image_path,model_save_path):
     best_acc = 0.0
     best_model_wts = model.state_dict()
 
-
+    # This train_model code is from Jon's notebook
     def train_model(model, criterion, optimizer, dataloaders, scheduler, device, num_epochs=25):
         model = model.to(device)  # Send model to GPU if available
         since = time.time()

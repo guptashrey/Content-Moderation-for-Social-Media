@@ -7,4 +7,3 @@ numpy~=1.23.5
 matplotlib~=3.6.3
 joblib~=1.2.0
 scikit-learn~=1.2.1
-jupyter~=1.0.0
