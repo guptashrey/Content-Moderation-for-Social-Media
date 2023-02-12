@@ -11,22 +11,24 @@ def download_image(url, name, path,path_failurls):
         print(f"Image '{name}' already exists, skipping.")
         return
 
-    try:
-        response = requests.get(url, timeout=20)
-        file_path = image_path
-        with open(file_path, "wb") as f:
-            f.write(response.content)
+    if image_path.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp')):
+        # .jpg,.jpeg,.png,.ppm,.bmp,.pgm,.tif,.tiff,.webp
+        try:
+            response = requests.get(url, timeout=20)
+            file_path = image_path
+            with open(file_path, "wb") as f:
+                f.write(response.content)
 
-        print(f"Image '{name}' downloaded at path '{file_path}'.")
-        image = Image.open(image_path)
-        im2 = image.convert('RGB')
+            print(f"Image '{name}' downloaded at path '{file_path}'.")
+            image = Image.open(image_path)
+            im2 = image.convert('RGB')
 
-        print(f"optimize image '{image_path}'")
-        image.save(image_path, optimize=True, quality=80)
-    except Exception as e:
-        print(f"Failed to download image '{name}': {e}")
-        with open(path_failurls, "a") as f:
-            f.write(f"{url}\n")
+            print(f"optimize image '{image_path}'")
+            image.save(image_path, optimize=True, quality=80)
+        except Exception as e:
+            print(f"Failed to download image '{name}': {e}")
+            with open(path_failurls, "a") as f:
+                f.write(f"{url}\n")
 
 
 def download_image_path(path, path_failurls, path_image_url):

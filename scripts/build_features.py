@@ -14,10 +14,14 @@ def optimize_image(image_path, output_path):
         # os.remove(image_path)
 
 
-def optimize_image_path(folder, output_path):
+def optimize_image_path(folder, output_folder):
     for filename in os.listdir(folder):
         image_path = os.path.join(folder, filename)
-        optimize_image(image_path, output_path)
+        output_path = os.path.join(output_folder, filename)
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
+        print(image_path,output_path)
+        optimize_image(image_path,output_path)
 
 #
 # if __name__ == '__main__':

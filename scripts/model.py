@@ -153,7 +153,7 @@ def train_predict_dl_model(image_path,model_save_path):
         time_elapsed = time.time() - since
         print('Training complete in {:.0f}m {:.0f}s'.format(
             time_elapsed // 60, time_elapsed % 60))
-        print('Best val Acc: {:3f}'.format(best_acc))
+        print('Best val in DL Acc: {:3f}'.format(best_acc))
 
         # Load the weights from best model
         model.load_state_dict(torch.load(model_save_path))
@@ -257,7 +257,7 @@ def train_predict_non_dl_model(image_path,model_save_path):
         print("Models: ", type(m), "Accuracy: ", accuracy)
         results.append(accuracy)
     best_model = models[np.argmax(results)]
-    print("The best model is", type(best_model))
+    print("The best model in non DL is", type(best_model))
     # save the model
     joblib.dump(best_model, model_save_path)
     # load the model from disk
