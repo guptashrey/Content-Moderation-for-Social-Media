@@ -263,5 +263,5 @@ def train_predict_non_dl_model(image_path,model_save_path):
     # load the model from disk
     loaded_model = joblib.load(model_save_path)
     result = loaded_model.score(test_data, test_labels)
-    print("Load Accuracy: ", result)
+    # print("Load Accuracy: ", result)
     return loaded_model
