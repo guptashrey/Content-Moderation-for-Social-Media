@@ -9,12 +9,27 @@ We have trained a machine learning model to accurately identify and categorize s
 
 ## Run the project (get data, build features, train model) 
 > python main.py
-## Deep Learning Model (Transfer learning with ResNet18)
+## Deep Learning Model (Transfer learning with ResNet18, trained on GPU)
 > Located in ./scrips/model.py
 ```
 def train_predict_dl_model(image_path,model_save_path):
 
-    #   ...code here...
+    #   ...Other code here to load data...
+    
+    
+    # Load the ResNet18 model
+    model = torchvision.models.resnet18(pretrained=True)
+
+    # Freeze the model parameters
+    for param in model.parameters():
+        param.requires_grad = False
+
+    # Replace the final fully-connected layer
+    num_ftrs = model.fc.in_features
+    model.fc = nn.Linear(num_ftrs, len(class_names))
+    
+    #   ...Other code here to train, save, load the best models...
+
 
 ```
 
@@ -24,8 +39,22 @@ def train_predict_dl_model(image_path,model_save_path):
 ```
 def train_predict_non_dl_model(image_path,model_save_path):
 
-   #   ...code here...
-```
+
+    #   ...Other code here to load data...
+      
+    # train the model
+    models = [RandomForestClassifier(random_state=45), DecisionTreeClassifier(random_state=0)]
+    results = []
+    for m in models:
+        m.fit(train_data, train_labels)
+        predictions = m.predict(test_data)
+        accuracy = accuracy_score(test_labels, predictions)
+        print("Models: ", type(m), "Accuracy: ", accuracy)
+        results.append(accuracy)
+    best_model = models[np.argmax(results)]
+    
+    #   ...code here to save, load the best models...
+ ```
 
 
 ## Project repo structure
