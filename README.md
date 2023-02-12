@@ -7,6 +7,9 @@ We have trained a machine learning model to accurately identify and categorize s
 ## Install dependencies
 > pip install .
 
+## Run the project (get data, build features, train model) 
+> python main.py
+
 ## Project repo structure
 
 ```
@@ -16,9 +19,9 @@ We have trained a machine learning model to accurately identify and categorize s
 ├── setup.py                <- script to set up project (get data, build features, train model)
 ├── main.py [or main.ipynb] <- main script/notebook to run project / user interface
 ├── scripts                 <- directory for pipeline scripts or utility scripts
-    ├── make_dataset.py     <- script to get data [OPTIONAL]
-    ├── build_features.py   <- script to run pipeline to generate features [OPTIONAL]
-    ├── model.py            <- script to train model and predict [OPTIONAL]
+    ├── make_dataset.py     <- script to get data
+    ├── build_features.py   <- script to run pipeline to generate features 
+    ├── model.py            <- script to train model and predict
 ├── models                  <- directory for trained models
 ├── data                    <- directory for project data
     ├── raw                 <- directory for raw data or script to download
