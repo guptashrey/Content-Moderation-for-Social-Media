@@ -2,7 +2,7 @@
 Our project focuses on providing a content moderation solution for social media. The aim is to classify social media images into three categories: violence, porn, and normal.
 
 ## Model Training
-We have trained a machine learning model to accurately identify and categorize social media images based on their content. The model is trained on a large dataset of social media images and uses advanced techniques to accurately classify each image.
+We have trained a deep learning model and non deep learning models to accurately identify and categorize social media images based on their content. The model is trained on a large dataset of social media images and uses advanced techniques to accurately classify each image.
 
 ## Install dependencies
 > pip install .
