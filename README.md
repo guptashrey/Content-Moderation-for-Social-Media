@@ -4,7 +4,7 @@ Our project focuses on providing a content moderation solution for social media.
 ## Model Training
 We have trained a deep learning model and non deep learning models to accurately identify and categorize social media images based on their content. The model is trained on a large dataset of social media images and uses advanced techniques to accurately classify each image.
 
-## Install dependencies
+## Install dependencies (Python 3.8)
 > pip install .
 
 ## Run the project (get data, build features, train model) 
