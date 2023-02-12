@@ -9,6 +9,24 @@ We have trained a machine learning model to accurately identify and categorize s
 
 ## Run the project (get data, build features, train model) 
 > python main.py
+## Deep Learning Model (Transfer learning with ResNet18)
+> Located in ./scrips/model.py
+```
+def train_predict_dl_model(image_path,model_save_path):
+
+    #   ...code here...
+
+```
+
+
+## Non Deep Learning Model (Random Forest, Decision Tree)
+> Located in ./scrips/model.py
+```
+def train_predict_non_dl_model(image_path,model_save_path):
+
+   #   ...code here...
+```
+
 
 ## Project repo structure
 
@@ -33,11 +51,10 @@ We have trained a machine learning model to accurately identify and categorize s
 
 ## Features
 * Accurate classification of news images into violence, porn, and normal categories.
-* Our content filter solution can be easily integrated with existing social media platforms to provide a safer and more enjoyable user experience. 
-* The filter works in real-time, analyzing each article images as it is posted and categorizing it accordingly.
-
+* Used transfer learning to train a deep learning model.
+* Compared deep learning and non-deep learning models (Random Forest, Decision Tree) to determine which model is more effective.
 
 ## Conclusion
-We believe that our content moderation solution will help create a safer and more enjoyable online environment for social media users. By removing violent and pornographic content, we aim to create a space where people can comfortably share and consume news without fear of being exposed to inappropriate material.
+After comparison, the deep learning has better performance in image classification. We believe that our content moderation solution will help create a safer and more enjoyable online environment for social media users. By removing violent and pornographic content, we aim to create a space where people can comfortably share and consume news without fear of being exposed to inappropriate material.
 
 
