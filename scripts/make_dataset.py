@@ -4,6 +4,7 @@ from PIL import Image
 
 
 
+# download the image in the url and save it in the path
 def download_image(url, name, path,path_failurls):
     name=name.split("?")[0]
     image_path = os.path.join(path, name)
@@ -20,17 +21,14 @@ def download_image(url, name, path,path_failurls):
                 f.write(response.content)
 
             print(f"Image '{name}' downloaded at path '{file_path}'.")
-            image = Image.open(image_path)
-            im2 = image.convert('RGB')
 
-            print(f"optimize image '{image_path}'")
-            image.save(image_path, optimize=True, quality=80)
         except Exception as e:
             print(f"Failed to download image '{name}': {e}")
             with open(path_failurls, "a") as f:
                 f.write(f"{url}\n")
 
 
+# read all images url in the txt and download all images in the path and
 def download_image_path(path, path_failurls, path_image_url):
     failed_downloads = set()
     if os.path.exists("%s" % path_failurls):

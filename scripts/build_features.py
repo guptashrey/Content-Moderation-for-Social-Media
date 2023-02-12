@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-
+# open the image in the path and optimize it with quality 80 and save the optimized image in the output path
 def optimize_image(image_path, output_path):
     try:
         image = Image.open(image_path)
@@ -14,6 +14,7 @@ def optimize_image(image_path, output_path):
         # os.remove(image_path)
 
 
+# load all images in the path and optimize it with quality 80 and save the optimized image in the output path
 def optimize_image_path(folder, output_folder):
     for filename in os.listdir(folder):
         image_path = os.path.join(folder, filename)
