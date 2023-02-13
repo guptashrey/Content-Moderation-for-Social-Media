@@ -1,9 +1,9 @@
 {
-    "pretrained_model_to_use": "resnet152",
+    "pretrained_model_to_use": "vgg19_bn",
     "freeze_pretrained_model": true,
     "data_dir": "../../images",
     "orig_data_dir": "../data/images",
-    "model_dir": "../models/resnet_152_only_fc_orig.pt",
+    "model_dir": "../models/vgg19_bn_only_fc.pt",
     "train_perc": 0.5,
     "val_perc": 0.25,
     "test_perc": 0.25,

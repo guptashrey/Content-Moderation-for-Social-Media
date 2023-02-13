@@ -19,7 +19,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 # local imports
-from resnet_helper_functions import create_datasets, create_dataloaders, train_model
+from resnet_helper_functions import create_datasets, create_dataloaders, train_model, test_model
 
 # torch parameters being used
 TORCH_VERSION = ".".join(torch.__version__.split(".")[:2])
@@ -34,9 +34,9 @@ def run_script():
     """
 
     # read in config file
-    with open('resnet_config.json') as f:
+    with open('vgg_config.json') as f:
         config = json.load(f)
-        logging.info('Resnet Config File Read Successfully.')
+        logging.info('VGG Config File Read Successfully.')
         
     # create datasets and dataloaders
     train_dataset, val_dataset, test_dataset, class_names, num_classes = create_datasets(config["data_dir"], config["train_perc"], config["val_perc"], config["test_perc"])
@@ -47,16 +47,22 @@ def run_script():
 
     # instantiate pre-trained resnet
     #net = torch.hub.load('pytorch/vision', config["pretrained_model_to_use"], weights=config["weights_to_use"])
-    if config["pretrained_model_to_use"] == 'resnet18':
-        net = torchvision.models.resnet18(pretrained=True)
-    elif config["pretrained_model_to_use"] == 'resnet34':
-        net = torchvision.models.resnet34(pretrained=True)
-    elif config["pretrained_model_to_use"] == 'resnet50':
-        net = torchvision.models.resnet50(pretrained=True)
-    elif config["pretrained_model_to_use"] == 'resnet101':
-        net = torchvision.models.resnet101(pretrained=True)
-    elif config["pretrained_model_to_use"] == 'resnet152':
-        net = torchvision.models.resnet152(pretrained=True)
+    if config["pretrained_model_to_use"] == 'vgg11':
+        net = torchvision.models.vgg11(pretrained=True)
+    elif config["pretrained_model_to_use"] == 'vgg11_bn':
+        net = torchvision.models.vgg11_bn(pretrained=True)
+    elif config["pretrained_model_to_use"] == 'vgg13':
+        net = torchvision.models.vgg13(pretrained=True)
+    elif config["pretrained_model_to_use"] == 'vgg13_bn':
+        net = torchvision.models.vgg13_bn(pretrained=True)
+    elif config["pretrained_model_to_use"] == 'vgg16':
+        net = torchvision.models.vgg16(pretrained=True)
+    elif config["pretrained_model_to_use"] == 'vgg16_bn':
+        net = torchvision.models.vgg16_bn(pretrained=True)
+    elif config["pretrained_model_to_use"] == 'vgg19':
+        net = torchvision.models.vgg19(pretrained=True)
+    elif config["pretrained_model_to_use"] == 'vgg19_bn':
+        net = torchvision.models.vgg19_bn(pretrained=True)
     
     logging.info('Model Loaded Successfully.')
     
@@ -66,10 +72,10 @@ def run_script():
             param.requires_grad = False
     
     # get the number of inputs to final FC layer
-    num_ftrs = net.fc.in_features
+    num_ftrs = net.classifier._modules['6'].in_features
 
     # replace existing FC layer with a new FC layer having the same number of inputs and num_classes outputs
-    net.fc = nn.Linear(num_ftrs, num_classes)
+    net.classifier._modules['6'] = nn.Linear(num_ftrs, num_classes)
     
     # show model architecture
     temp, temp_ = next(iter(dataloaders['train']))
@@ -81,7 +87,7 @@ def run_script():
 
     # define optimizer
     if config["freeze_pretrained_model"]:
-        optimizer = optim.Adam(net.fc.parameters(), lr=0.001)
+        optimizer = optim.Adam(net.classifier._modules['6'].parameters(), lr=0.001)
     else:
         optimizer = optim.Adam(net.parameters(), lr=0.001)
 
@@ -100,8 +106,8 @@ def run_script():
     
     net = train_model(model = net, model_dir = model_dir, criterion = criterion, optimizer = optimizer, dataloaders = dataloaders, dataset_sizes = dataset_sizes, scheduler = lr_scheduler, device = device, num_epochs = num_epochs)
 
-    # test the model
-    #test_model(model = net, test_dataset = test_dataset, device = device)
+    #test the model
+    test_model(model = net, test_dataloader = dataloaders["test"], device = device)
 
 if __name__ == '__main__':
     run_script()

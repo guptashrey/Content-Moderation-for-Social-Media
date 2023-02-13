@@ -1,0 +1,395 @@
+     BatchNorm2d-494            [16, 512, 7, 7]           1,024
+            ReLU-495            [16, 512, 7, 7]               0
+          Conv2d-496            [16, 512, 7, 7]       2,359,296
+     BatchNorm2d-497            [16, 512, 7, 7]           1,024
+            ReLU-498            [16, 512, 7, 7]               0
+          Conv2d-499           [16, 2048, 7, 7]       1,048,576
+     BatchNorm2d-500           [16, 2048, 7, 7]           4,096
+            ReLU-501           [16, 2048, 7, 7]               0
+      Bottleneck-502           [16, 2048, 7, 7]               0
+          Conv2d-503            [16, 512, 7, 7]       1,048,576
+     BatchNorm2d-504            [16, 512, 7, 7]           1,024
+            ReLU-505            [16, 512, 7, 7]               0
+          Conv2d-506            [16, 512, 7, 7]       2,359,296
+     BatchNorm2d-507            [16, 512, 7, 7]           1,024
+            ReLU-508            [16, 512, 7, 7]               0
+          Conv2d-509           [16, 2048, 7, 7]       1,048,576
+     BatchNorm2d-510           [16, 2048, 7, 7]           4,096
+            ReLU-511           [16, 2048, 7, 7]               0
+      Bottleneck-512           [16, 2048, 7, 7]               0
+AdaptiveAvgPool2d-513           [16, 2048, 1, 1]               0
+          Linear-514                    [16, 3]           6,147
+================================================================
+Total params: 58,149,955
+Trainable params: 58,149,955
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 9.19
+Forward/backward pass size (MB): 9705.31
+Params size (MB): 221.82
+Estimated Total Size (MB): 9936.32
+----------------------------------------------------------------
+None 
+
+INFO:root:Device cuda:0 Being Used.
+INFO:root:Started Training The Model.
+
+Epoch 0/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3787 Accuracy: 0.8608
+Val Loss: 0.3202 Accuracy: 0.8854
+
+Epoch 1/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3454 Accuracy: 0.8746
+Val Loss: 0.2952 Accuracy: 0.8950
+
+Epoch 2/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3380 Accuracy: 0.8760
+Val Loss: 0.3035 Accuracy: 0.8923
+
+Epoch 3/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3255 Accuracy: 0.8803
+Val Loss: 0.2965 Accuracy: 0.8972
+
+Epoch 4/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3276 Accuracy: 0.8817
+Val Loss: 0.3023 Accuracy: 0.8941
+
+Epoch 5/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3311 Accuracy: 0.8816
+Val Loss: 0.3019 Accuracy: 0.8963
+
+Epoch 6/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3234 Accuracy: 0.8836
+Val Loss: 0.2875 Accuracy: 0.9001
+
+Epoch 7/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3146 Accuracy: 0.8864
+Val Loss: 0.3037 Accuracy: 0.8902
+
+Epoch 8/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3199 Accuracy: 0.8848
+Val Loss: 0.2999 Accuracy: 0.8953
+
+Epoch 9/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3180 Accuracy: 0.8865
+Val Loss: 0.3092 Accuracy: 0.8898
+
+Training complete in 63m 53s
+Best Validation Accuracy: 0.900123
+
+
+
+
+
+Total params: 58,149,955
+Trainable params: 6,147
+Non-trainable params: 58,143,808
+----------------------------------------------------------------
+Input size (MB): 9.19
+Forward/backward pass size (MB): 9705.31
+Params size (MB): 221.82
+Estimated Total Size (MB): 9936.32
+----------------------------------------------------------------
+None 
+
+INFO:root:Device cuda:0 Being Used.
+INFO:root:Started Training The Model.
+
+Epoch 0/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3787 Accuracy: 0.8608
+Val Loss: 0.3202 Accuracy: 0.8854
+
+Epoch 1/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3454 Accuracy: 0.8746
+Val Loss: 0.2952 Accuracy: 0.8950
+
+Epoch 2/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3380 Accuracy: 0.8760
+Val Loss: 0.3035 Accuracy: 0.8923
+
+Epoch 3/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3255 Accuracy: 0.8803
+Val Loss: 0.2965 Accuracy: 0.8972
+
+Epoch 4/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3276 Accuracy: 0.8817
+Val Loss: 0.3023 Accuracy: 0.8941
+
+Epoch 5/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3311 Accuracy: 0.8816
+Val Loss: 0.3019 Accuracy: 0.8963
+
+Epoch 6/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3234 Accuracy: 0.8836
+Val Loss: 0.2875 Accuracy: 0.9001
+
+Epoch 7/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3146 Accuracy: 0.8864
+Val Loss: 0.3037 Accuracy: 0.8902
+
+Epoch 8/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3199 Accuracy: 0.8848
+Val Loss: 0.2999 Accuracy: 0.8953
+
+Epoch 9/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.3180 Accuracy: 0.8865
+Val Loss: 0.3092 Accuracy: 0.8898
+
+Training complete in 60m 2s
+Best Validation Accuracy: 0.900123
+
+
+
+
+================================================================
+Total params: 139,593,539
+Trainable params: 12,291
+Non-trainable params: 139,581,248
+----------------------------------------------------------------
+Input size (MB): 9.19
+Forward/backward pass size (MB): 5631.88
+Params size (MB): 532.51
+Estimated Total Size (MB): 6173.57
+----------------------------------------------------------------
+None 
+
+INFO:root:Device cuda:0 Being Used.
+INFO:root:Started Training The Model.
+
+Epoch 0/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4213 Accuracy: 0.8472
+Val Loss: 0.3279 Accuracy: 0.8810
+
+Epoch 1/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4156 Accuracy: 0.8548
+Val Loss: 0.3325 Accuracy: 0.8842
+
+Epoch 2/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4434 Accuracy: 0.8490
+Val Loss: 0.3600 Accuracy: 0.8846
+
+Epoch 3/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4408 Accuracy: 0.8521
+Val Loss: 0.3552 Accuracy: 0.8749
+
+Epoch 4/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4360 Accuracy: 0.8547
+Val Loss: 0.3212 Accuracy: 0.8885
+
+Epoch 5/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4451 Accuracy: 0.8525
+Val Loss: 0.3368 Accuracy: 0.8831
+
+Epoch 6/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4469 Accuracy: 0.8509
+Val Loss: 0.3362 Accuracy: 0.8899
+
+Epoch 7/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4495 Accuracy: 0.8512
+Val Loss: 0.3954 Accuracy: 0.8701
+
+Epoch 8/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4466 Accuracy: 0.8518
+Val Loss: 0.3394 Accuracy: 0.8905
+
+Epoch 9/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.4565 Accuracy: 0.8483
+Val Loss: 0.3445 Accuracy: 0.8810
+
+Training complete in 56m 14s
+Best Validation Accuracy: 0.890452
+
+
+            ReLU-46          [16, 512, 14, 14]               0
+           Conv2d-47          [16, 512, 14, 14]       2,359,808
+      BatchNorm2d-48          [16, 512, 14, 14]           1,024
+             ReLU-49          [16, 512, 14, 14]               0
+           Conv2d-50          [16, 512, 14, 14]       2,359,808
+      BatchNorm2d-51          [16, 512, 14, 14]           1,024
+             ReLU-52          [16, 512, 14, 14]               0
+        MaxPool2d-53            [16, 512, 7, 7]               0
+AdaptiveAvgPool2d-54            [16, 512, 7, 7]               0
+           Linear-55                 [16, 4096]     102,764,544
+             ReLU-56                 [16, 4096]               0
+          Dropout-57                 [16, 4096]               0
+           Linear-58                 [16, 4096]      16,781,312
+             ReLU-59                 [16, 4096]               0
+          Dropout-60                 [16, 4096]               0
+           Linear-61                    [16, 3]          12,291
+================================================================
+Total params: 139,593,539
+Trainable params: 139,593,539
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 9.19
+Forward/backward pass size (MB): 5631.88
+Params size (MB): 532.51
+Estimated Total Size (MB): 6173.57
+----------------------------------------------------------------
+None 
+
+INFO:root:Device cuda:0 Being Used.
+INFO:root:Started Training The Model.
+
+Epoch 0/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7689 Accuracy: 0.7317
+Val Loss: 0.7049 Accuracy: 0.7408
+
+Epoch 1/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7144 Accuracy: 0.7394
+Val Loss: 0.7024 Accuracy: 0.7445
+
+Epoch 2/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7115 Accuracy: 0.7399
+Val Loss: 0.7015 Accuracy: 0.7445
+
+Epoch 3/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7097 Accuracy: 0.7399
+Val Loss: 0.7055 Accuracy: 0.7445
+
+Epoch 4/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7087 Accuracy: 0.7399
+Val Loss: 0.7008 Accuracy: 0.7445
+
+Epoch 5/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7091 Accuracy: 0.7399
+Val Loss: 0.7008 Accuracy: 0.7445
+
+Epoch 6/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7088 Accuracy: 0.7399
+Val Loss: 0.6988 Accuracy: 0.7445
+
+Epoch 7/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7087 Accuracy: 0.7399
+Val Loss: 0.6977 Accuracy: 0.7445
+
+Epoch 8/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7077 Accuracy: 0.7399
+Val Loss: 0.7001 Accuracy: 0.7445
+
+Epoch 9/9
+----------
+/hpc/group/rescomp/sg623/miniconda3/envs/cv_540/lib/python3.8/site-packages/PIL/Image.py:979: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Train Loss: 0.7077 Accuracy: 0.7399
+Val Loss: 0.7029 Accuracy: 0.7445
+
+Training complete in 57m 17s
+Best Validation Accuracy: 0.744505
