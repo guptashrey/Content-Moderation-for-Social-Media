@@ -4,13 +4,13 @@ from PIL import Image
 import urllib.request
 import os
 
-if not os.path.isfile('./model/best_model.pt'):
-    urllib.request.urlretrieve("https://duke.box.com/shared/static/yrzky3rmcv7fj3txeer375br6nuvm5ly.pt", "./model/best_model.pt")
+if not os.path.isfile('./models/best_model.pt'):
+    urllib.request.urlretrieve("https://duke.box.com/shared/static/qxg2rputsvocejjd9ljm4dlzfiouq3y5.pt", "./models/best_model.pt")
 
-model = torch.load('./model/best_model.pt', map_location=torch.device('cpu'))
+model = torch.load('./models/best_model.pt', map_location=torch.device('cpu'))
 model.eval()
 
-with open('./model/classes.txt') as f:
+with open('./models/classes.txt') as f:
     classes = [line.strip() for line in f.readlines()]
 
 transform = transforms.Compose([

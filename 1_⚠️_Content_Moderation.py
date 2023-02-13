@@ -14,8 +14,9 @@ def run_ui():
     st.markdown("""---""")
 
     # adding text to sidebar
-    st.sidebar.write("Influenza is the most common viral infection with virus strains mutating every season, effectively changing the severity of the infection. In rare but possible cases this could be deadly especially for the high-risk groups. Medical service providers can face situations where they have deployed more resources than necessary or they are entirely overwhelmed.")
-    st.sidebar.write("This will serve as a tool for the decision makers to promote relevant measures to curb infections in different regions through vaccination drives, masking advisories to the public, better crowd control, better resource management in terms of hospitalizations and better gauge of the possibility of the flu turning into an epidemic or a pandemic.")
+    st.sidebar.write("Image content moderation is crucial in ensuring the safety and well-being of individuals who use digital platforms. With the widespread use of the internet, it's become easier to access and share images, both good and bad.")
+    st.sidebar.write("This ease of access to visual content has also led to an increase in the spread of inappropriate, violent, and pornographic images. These types of images can be harmful and traumatizing for those who come across them, particularly children and young people.")
+    st.sidebar.write("By filtering out inappropriate, violent, and pornographic images, digital platforms can create a safer and more inclusive environment for all users. Moderating these types of images can also help prevent the spread of harmful beliefs and legal consequences for platform operators.")
 
     image_upload = st.file_uploader("Upload an image", type="jpg")
 
@@ -33,8 +34,11 @@ def run_ui():
         with col6:
             st.metric(label=labels[0][0].upper() + " " + "Content Score", value=format(labels[0][1]*100, "0.01f")+"%")
 
-        with col8:
+        with col7:
             st.metric(label=labels[1][0].upper() + " " + "Content Score", value=format(labels[1][1]*100, "0.01f")+"%")
+
+        with col8:
+            st.metric(label=labels[2][0].upper() + " " + "Content Score", value=format(labels[2][1]*100, "0.01f")+"%")
 
 if __name__ == "__main__":
     run_ui()
