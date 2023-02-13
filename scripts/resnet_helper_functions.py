@@ -11,28 +11,35 @@ def define_transforms():
     training data: resize to 256 * 256, center cropping, randomized horizontal & vertical flipping, and normalization
     validation and test data: resize to 256 * 256, center cropping, and normalization
     """
-    data_transforms = {
-        'train': transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
-            transforms.RandomHorizontalFlip(),
-            transforms.RandomVerticalFlip(),
-            transforms.ToTensor(),
-            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-        ]),
-        'val': transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
-            transforms.ToTensor(),
-            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-        ]),
-        'test': transforms.Compose([
+#     data_transforms = {
+#         'train': transforms.Compose([
+#             transforms.Resize(256),
+#             transforms.CenterCrop(224),
+#             transforms.RandomHorizontalFlip(),
+#             transforms.RandomVerticalFlip(),
+#             transforms.ToTensor(),
+#             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+#         ]),
+#         'val': transforms.Compose([
+#             transforms.Resize(256),
+#             transforms.CenterCrop(224),
+#             transforms.ToTensor(),
+#             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+#         ]),
+#         'test': transforms.Compose([
+#             transforms.Resize(256),
+#             transforms.CenterCrop(224),
+#             transforms.ToTensor(),
+#             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+#         ])
+#     }
+
+    data_transforms = transforms.Compose([
             transforms.Resize(256),
             transforms.CenterCrop(224),
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ])
-    }
 
     return data_transforms
 
@@ -47,6 +54,8 @@ def create_datasets(data_dir, train_perc, val_perc, test_perc):
         train_dataset (torchvision.datasets.ImageFolder): training dataset
         val_dataset (torchvision.datasets.ImageFolder): validation dataset
         test_dataset (torchvision.datasets.ImageFolder): test dataset
+        class_names (list): list of class names
+        num_classes (int): number of classes
     """
     ## Define transformations for training, validation, and test data
     data_transforms = define_transforms()
@@ -55,11 +64,15 @@ def create_datasets(data_dir, train_perc, val_perc, test_perc):
     image_dataset = torchvision.datasets.ImageFolder(root=data_dir, transform=data_transforms)
     train_size = int(train_perc * len(image_dataset))
     val_size = int(val_perc * len(image_dataset))
-    test_size = int(test_perc * len(image_dataset))
+    test_size = len(image_dataset) - train_size - val_size
 
     train_dataset, val_dataset, test_dataset = torch.utils.data.random_split(image_dataset, [train_size, val_size, test_size])
+    
+    # get class names associated with labels
+    class_names = image_dataset.classes
+    num_classes = len(class_names)
 
-    return train_dataset, val_dataset, test_dataset
+    return train_dataset, val_dataset, test_dataset, class_names, num_classes
 
 
 def create_dataloaders(train_dataset, val_dataset, test_dataset, batch_size, num_workers=2):
@@ -75,8 +88,6 @@ def create_dataloaders(train_dataset, val_dataset, test_dataset, batch_size, num
     Returns:
         dataloaders (dict): dictionary of dataloaders for training and validation sets
         dataset_sizes (dict): dictionary of sizes of training and validation sets
-        class_names (list): list of class names
-        num_classes (int): number of classes
     """
     # create DataLoaders for training and validation sets
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
@@ -89,13 +100,9 @@ def create_dataloaders(train_dataset, val_dataset, test_dataset, batch_size, num
     # store size of training and validation sets
     dataset_sizes = {'train': len(train_dataset), 'val': len(val_dataset), 'test': len(test_dataset)}
 
-    # get class names associated with labels
-    class_names = train_dataset.classes
-    num_classes = len(class_names)
+    return dataloaders, dataset_sizes
 
-    return dataloaders, dataset_sizes, class_names, num_classes
-
-def train_model(model, model_dir, criterion, optimizer, dataloaders, dataset_sizes, scheduler, device, num_epochs):
+def train_model(model, model_dir, criterion, optimizer, dataloaders, dataset_sizes, scheduler=None, device="cpu", num_epochs=1):
     """
     Train the model using transfer learning
 
@@ -163,12 +170,13 @@ def train_model(model, model_dir, criterion, optimizer, dataloaders, dataset_siz
 
             # step along learning rate scheduler when in train
             if phase == 'train':
-                scheduler.step()
+                if scheduler != None:
+                    scheduler.step()
 
             # calculate and display average loss and accuracy for the epoch
             epoch_loss = running_loss / dataset_sizes[phase]
             epoch_acc = running_corrects.double() / dataset_sizes[phase]
-            print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
+            print('{} Loss: {:.4f} Accuracy: {:.4f}'.format(phase.capitalize(), epoch_loss, epoch_acc))
 
             # if model performs better on val set, save weights as the best model
             if phase == 'val' and epoch_acc > best_acc:
@@ -181,7 +189,7 @@ def train_model(model, model_dir, criterion, optimizer, dataloaders, dataset_siz
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(
         time_elapsed // 60, time_elapsed % 60))
-    print('Best val Acc: {:3f}'.format(best_acc))
+    print('Best Validation Accuracy: {:3f}'.format(best_acc))
 
     # load the weights from best model
     model.load_state_dict(best_model_wts)

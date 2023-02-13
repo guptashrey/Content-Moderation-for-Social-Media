@@ -1,9 +1,13 @@
 {
     "pretrained_model_to_use": "resnet152",
     "weights_to_use": "ResNet152_Weights.DEFAULT",
-    "freeze_pretrained_model": True,
-    "data_dir": "./images",
-    "train_perc": 0.5,
-    "val_perc": 0.25,
-    "test_perc": 0.25
+    "freeze_pretrained_model": true,
+    "data_dir": "../data/images",
+    "model_dir": "../model/abc.pt",
+    "train_perc": 0.1,
+    "val_perc": 0.1,
+    "test_perc": 0.8,
+    "batch_size": 16,
+    "num_workers": 8,
+    "num_epochs": 1
 }
