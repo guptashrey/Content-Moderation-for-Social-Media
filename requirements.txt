@@ -7,4 +7,4 @@ numpy~=1.23.5
 matplotlib~=3.6.3
 joblib~=1.2.0
 scikit-learn~=1.2.1
-torch-summary~=1.4.5
+torchsummary~=1.5.1
