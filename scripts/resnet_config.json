@@ -1,0 +1,9 @@
+{
+    "pretrained_model_to_use": "resnet152",
+    "weights_to_use": "ResNet152_Weights.DEFAULT",
+    "freeze_pretrained_model": True,
+    "data_dir": "./images",
+    "train_perc": 0.5,
+    "val_perc": 0.25,
+    "test_perc": 0.25
+}
