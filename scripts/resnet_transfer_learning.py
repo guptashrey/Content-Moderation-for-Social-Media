@@ -5,6 +5,12 @@ import torch.optim as optim
 import torchvision
 from torchsummary import summary
 import json
+import random
+import numpy as np
+
+np.random.seed(0)
+random.seed(0)
+torch.manual_seed(0)
 
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = 120000000

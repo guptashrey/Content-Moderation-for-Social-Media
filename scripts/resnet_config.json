@@ -2,8 +2,8 @@
     "pretrained_model_to_use": "resnet152",
     "weights_to_use": "ResNet152_Weights.DEFAULT",
     "freeze_pretrained_model": true,
-    "data_dir": "../data/images",
-    "model_dir": "../model/abc.pt",
+    "data_dir": "../../images", // ../data/images
+    "model_dir": "../models/abc.pt",
     "train_perc": 0.1,
     "val_perc": 0.1,
     "test_perc": 0.8,

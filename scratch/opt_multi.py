@@ -3,8 +3,8 @@ from PIL import Image
 import os
 
 def optimize_image(filename):
-    folder = './nsfw'
-    opt_folder = './nsfw_optimized'
+    folder = './violence_images'
+    opt_folder = './violence'
     image_path = os.path.join(folder, filename)
     opt_image_path = os.path.join(opt_folder, filename)
     try:
@@ -19,8 +19,8 @@ def optimize_image(filename):
         os.remove(image_path)
 
 if __name__ == '__main__':
-    folder = './nsfw'
-    opt_folder = './nsfw_optimized'
+    folder = './violence_images'
+    opt_folder = './violence'
     file_names = os.listdir(folder)
-    with Pool(4) as p:
+    with Pool(8) as p:
         print(p.map(optimize_image, file_names))
