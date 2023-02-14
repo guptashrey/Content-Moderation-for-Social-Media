@@ -49,19 +49,19 @@ The project data and codes are arranged in the following manner:
     ├── dataset
         ├── make_dataset.py             <- script to get data
         ├── optimize_dataset.py         <- script to check if the images are corrupt and save them at 80% quality
-    ├── evaluation
+    ├── evaluation                      <- script to evaluate different models
         ├── eval_config.json
         ├── eval.py
         ├── eval_helper_functions.py
-    ├── resnet                          <- script to train model and predict
+    ├── resnet                          <- script to train and test the resnet model
         ├── resnet_config.json
         ├── resnet_helper_functions.py
         ├── resnet_transfer_learning.py
-    ├── vgg
+    ├── vgg                             <- script to train and test the vgg model
         ├── vgg_config.json
         ├── vgg_helper_functions.py
         ├── vgg_transfer_learning.py
-    ├── svm                             <- script to train model and predict
+    ├── svm                             <- script to train and test the svm model
         ├── svm_config.json
         ├── svm_helper_functions.py
         ├── svm_training.py.py
