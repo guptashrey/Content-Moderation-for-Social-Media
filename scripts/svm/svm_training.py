@@ -7,6 +7,7 @@ from torchsummary import summary
 import json
 import random
 import numpy as np
+from sklearn.metrics import classification_report
 
 np.random.seed(0)
 random.seed(0)
@@ -79,15 +80,17 @@ def run_script():
     svm_optimizer = torch.optim.SGD(svm_model.parameters(), lr=learning_rate, momentum=momentum)
     total_step = len(dataloaders["train"])
 
-    #model = train_model(svm_model, input_size, svm_loss_criteria, svm_optimizer, dataloaders, batch_size, device, num_epochs)
+    model = train_model(svm_model, input_size, svm_loss_criteria, svm_optimizer, dataloaders, batch_size, device, num_epochs)
 
     # save model
     torch.save(model, config["model_dir"])
     logging.info('Model Saved Successfully.')
-    #model = torch.load(config["model_dir"])
 
-    # test model
-    test_model(model, dataloaders["test"], device, input_size)
+    # test the model
+    all_preds, all_labels = test_model(model, dataloaders, device, config["input_size"])
+
+    # printing the results on test dataset
+    print(classification_report(all_labels, all_preds, target_names=class_names))
 
 if __name__ == "__main__":
     run_script()

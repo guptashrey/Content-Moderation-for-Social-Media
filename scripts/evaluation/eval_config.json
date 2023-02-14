@@ -1,13 +1,13 @@
 {
-    "pretrained_model_to_use": "resnet152",
-    "freeze_pretrained_model": true,
+    "model_type": "svm",
     "data_dir": "../../images",
     "orig_data_dir": "../data/images",
-    "model_dir": "../models/resnet_152_only_fc_orig.pt",
+    "model_dir": "../models/svm.pt",
     "train_perc": 0.5,
     "val_perc": 0.25,
     "test_perc": 0.25,
     "batch_size": 16,
     "num_workers": 8,
-    "num_epochs": 10
+    "num_epochs": 10,
+    "input_size": 150528
 }

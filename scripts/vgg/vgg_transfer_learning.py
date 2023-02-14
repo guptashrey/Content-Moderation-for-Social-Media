@@ -7,6 +7,7 @@ from torchsummary import summary
 import json
 import random
 import numpy as np
+from sklearn.metrics import classification_report
 
 np.random.seed(0)
 random.seed(0)
@@ -19,7 +20,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 # local imports
-from resnet_helper_functions import create_datasets, create_dataloaders, train_model, test_model
+from vgg_helper_functions import create_datasets, create_dataloaders, train_model, test_model
 
 # torch parameters being used
 TORCH_VERSION = ".".join(torch.__version__.split(".")[:2])
@@ -106,8 +107,11 @@ def run_script():
     
     net = train_model(model = net, model_dir = model_dir, criterion = criterion, optimizer = optimizer, dataloaders = dataloaders, dataset_sizes = dataset_sizes, scheduler = lr_scheduler, device = device, num_epochs = num_epochs)
 
-    #test the model
-    test_model(model = net, test_dataloader = dataloaders["test"], device = device)
+    # test the model
+    all_preds, all_labels = test_model(net, dataloaders, device)
+
+    # printing the results on test dataset
+    print(classification_report(all_labels, all_preds, target_names=class_names))
 
 if __name__ == '__main__':
     run_script()

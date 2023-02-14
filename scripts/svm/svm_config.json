@@ -1,13 +1,13 @@
 {
-    "data_dir": "../../images",
-    "orig_data_dir": "../data/images",
-    "model_dir": "../models/svm.pt",
+    "data_dir": "../../../images",
+    "orig_data_dir": "../../data/images",
+    "model_dir": "../../models/temp_svm.pt",
     "train_perc": 0.5,
     "val_perc": 0.25,
     "test_perc": 0.25,
     "batch_size": 16,
     "num_workers": 8,
-    "num_epochs": 10,
+    "num_epochs": 1,
     "input_size": 150528,
     "learning_rate": 0.001,
     "momentum": 0.1

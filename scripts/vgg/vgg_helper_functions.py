@@ -195,13 +195,13 @@ def train_model(model, model_dir, criterion, optimizer, dataloaders, dataset_siz
     model.load_state_dict(best_model_wts)
     return model
 
-def test_model(model, test_dataloader, device):
+def test_model(model, dataloaders, device):
     """
     Test the trained model performance on test dataset
 
     Args:
         model (torchvision.models): model to train
-        test_dataloader (torch.utils.data.DataLoader): test dataloader
+        dataloaders (dict): dictionary of dataloaders for training, validation and test sets
 
     Returns:
         model (torchvision.models): trained model
@@ -213,19 +213,15 @@ def test_model(model, test_dataloader, device):
     all_preds = []
     all_labels = []
 
-    for inputs, labels in test_dataloader:
-                    
-        inputs = inputs.to(device)
-        labels = labels.to(device)
-
-        with torch.no_grad():
-            # Get predictions
-            out = model(inputs)
-            prob = torch.nn.functional.softmax(out, dim=1)
-            prob = prob.cpu().numpy()
+    with torch.no_grad():
+        for inputs, labels in dataloaders["test"]:
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+            outputs = model(inputs)
+            _, preds = torch.max(outputs, 1)
+            preds = preds.cpu().numpy()
             labels = labels.cpu().numpy()
-        
-        all_preds.extend(prob)
-        all_labels.extend(labels)
+            all_preds.extend(preds)
+            all_labels.extend(labels)
 
     return all_preds, all_labels

@@ -126,13 +126,13 @@ def train_model(model, input_size, criterion, optimizer, dataloaders, batch_size
         print ('Epoch [{}/{}], Averge Loss:for epoch {}: {:.4f}]'.format(epoch+1, num_epochs, epoch+1, avg_loss_epoch))
     return model
 
-def test_model(model, test_dataloader, device, input_size):
+def test_model(model, dataloaders, device, input_size):
     """
     Test the trained model performance on test dataset
 
     Args:
         model (torchvision.models): model to train
-        test_dataloader (torch.utils.data.DataLoader): test dataloader
+        dataloaders (dict): dictionary of dataloaders for training, validation and test sets
 
     Returns:
         model (torchvision.models): trained model
@@ -141,23 +141,24 @@ def test_model(model, test_dataloader, device, input_size):
 
     # set model to evaluate mode
     model.eval()
+    all_preds = []
+    all_labels = []
 
-    correct = 0.
-    total = 0.
-    for images, labels in test_dataloader:
-        images = images.to(device)
-        labels = labels.to(device)
-        # Reshape images
-        images = images.reshape(-1, input_size)
-        
-        # Forward pass
-        outputs = model(images) 
-        
-        # Get predictions
-        predicted = torch.argmax(outputs, axis=1)
+    with torch.no_grad():
+        for inputs, labels in dataloaders["test"]:
+            inputs = inputs.to(device)
+            labels = labels.to(device)
 
-        # Calculate accuracy
-        total += labels.size(0) 
-        correct += (predicted == labels).sum()    
+            # Reshape images
+            inputs = inputs.reshape(-1, input_size)
+            # Forward pass
+            outputs = model(inputs)
+            # Get predictions
+            preds = torch.argmax(outputs, axis=1)
 
-    print('Accuracy of the SVM model on the val images: %f %%' % (100 * (correct.float() / total)))
+            preds = preds.cpu().numpy()
+            labels = labels.cpu().numpy()
+            all_preds.extend(preds)
+            all_labels.extend(labels)
+
+    return all_preds, all_labels
