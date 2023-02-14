@@ -85,9 +85,13 @@ The project data and codes are arranged in the following manner:
         ├── svm_training.py.py
 ├── models                              <- directory for trained models
 ├── data                                <- directory for project data
-    ├── raw                             <- directory for raw data or script to download
-    ├── processed                       <- directory to store processed data
-    ├── outputs                         <- directory to store any output data
+    ├── images                          <- directory to store images
+        ├── neutral
+        ├── nsfw
+        ├── violence
+    ├── source_urls                     <- directory to store source urls
+        ├── neutral.txt
+        ├── nsfw.txt
 ├── scratch                             <- directory to store any intermediate and scratch files used
 ├── notebooks                           <- directory to store any exploration notebooks used
 ├── .gitignore                          <- git ignore file
