@@ -1,63 +1,46 @@
 # Content Moderation for Social Media
-Our project focuses on providing a content moderation solution for social media. The aim is to classify social media images into three categories: violence, porn, and normal.
+**Project by Andrew Bonafede, Shrey Gupta, and Shuai Zheng for Duke AIPI 540 Computer Vision Module**
 
-## Model Training
-We have trained a deep learning model and non deep learning models to accurately identify and categorize social media images based on their content. The model is trained on a large dataset of social media images and uses advanced techniques to accurately classify each image.
+## Project Description
+Image content moderation is crucial in ensuring the safety and well-being of individuals who use digital platforms. With the widespread use of the internet, it's become easier to access and share images, both good and bad. This ease of access to visual content has also led to an increase in the spread of inappropriate, violent, and pornographic images. These types of images can be harmful and traumatizing for those who come across them, particularly children and young people.
 
-## Install dependencies (Python 3.8)
-> pip install .
+By filtering out inappropriate, violent, and pornographic images, digital platforms can create a safer and more inclusive environment for all users. Moderating these types of images can also help prevent the spread of harmful beliefs and legal consequences for platform operators.
 
-## Run the project (get data, build features, train model) 
-> python main.py
-## Deep Learning Model (Transfer learning with ResNet18, trained on GPU)
-> Located in ./scrips/model.py
-```
-def train_predict_dl_model(image_path,model_save_path):
+Our project focuses on providing a content moderation solution for social media. The aim is to classify social media images into three categories: violence, nsfw, and normal.
 
-    #   ...Other code here to load data...
-    
-    
-    # Load the ResNet18 model
-    model = torchvision.models.resnet18(pretrained=True)
+## About The Data
+We identified three key image datasets that we believe will be beneficial in modeling our content moderation problem. These datasets are:
 
-    # Freeze the model parameters
-    for param in model.parameters():
-        param.requires_grad = False
+### NSFW Images Data
+The NSFW images dataset used was collected from the [
+EBazarov/nsfw_data_source_url](https://github.com/EBazarov/nsfw_data_source_urls) github repository. The repository contains links to 1,589,331 NSFW images across 159 different categories.
 
-    # Replace the final fully-connected layer
-    num_ftrs = model.fc.in_features
-    model.fc = nn.Linear(num_ftrs, len(class_names))
-    
-    #   ...Other code here to train, save, load the best models...
+We wrote a python script to sample 10,000 image urls from this dataset and download the images. The script can be found in the `scripts` folder. The images were downloaded into the `data/images/nsfw` folder. As the images were large in size, we compressed them into a zip file and uploaded it to Box drive which can be accessed [here]().
 
+### Neutral Images Data
+The NSFW images dataset used was collected from the [
+alex000kim/nsfw_data_scraper](https://github.com/alex000kim/nsfw_data_scraper) github repository. The repository contains links to 36,837 neutral images across different categories.
 
-```
+We wrote a python script to download all these images. The script can be found in the `scripts` folder. The images were downloaded into the `data/images/neutral` folder. As the images were large in size, we compressed them into a zip file and uploaded it to Box drive which can be accessed [here]().
 
+### Violence Images Data
+The violence images dataset used was collected manually using the [Google Images](https://images.google.com/) search engine. We searched for specific keywords such as agression, assault, hostility, riot, mob lynching etc. and downloaded the results using the Chrome Browser extension Fatkun.
 
-## Non Deep Learning Model (Random Forest, Decision Tree)
-> Located in ./scrips/model.py
-```
-def train_predict_non_dl_model(image_path,model_save_path):
+As the images were large in size, we compressed them into a zip file and uploaded it to Box drive which can be accessed [here]().
 
+### Accessing the Data
+As mentioned, the dataset used for training the models is uploaded to a Box drive. Feel free to use the links above. In case, you are unable to access them, please email Shrey Gupta at s.gupta[AT]duke[DOT]edu with your name and reason for accessing the data and we will be happy to provide access.
 
-    #   ...Other code here to load data...
-      
-    # train the model
-    models = [RandomForestClassifier(random_state=45), DecisionTreeClassifier(random_state=0)]
-    results = []
-    for m in models:
-        m.fit(train_data, train_labels)
-        predictions = m.predict(test_data)
-        accuracy = accuracy_score(test_labels, predictions)
-        print("Models: ", type(m), "Accuracy: ", accuracy)
-        results.append(accuracy)
-    best_model = models[np.argmax(results)]
-    
-    #   ...code here to save, load the best models...
- ```
+## Data Processing
+Once the images were downloaded using the URLs, we wrote a python script to do the following:
+- Remove corrupt images
+- Remove duplicate images
+- Resave the images after optimizing the quality to 80%
 
+This script can be found in the `scripts` folder.
 
-## Project repo structure
+## Project Structure
+The project data and codes are arranged in the following manner:
 
 ```
 ├── README.md               <- description of project and how to set up and run it
@@ -77,13 +60,116 @@ def train_predict_non_dl_model(image_path,model_save_path):
 ├── .gitignore              <- git ignore file
 ```
 
+&nbsp;
+## Model Training and Evaluation
+A non deep learning and a deep learning modelling approach were used to accurately identify and categorize social media images based on their content. The non deep learning approach used Random Forest and SVM models whereas the deep learning approach used VGG and Resnet model architectures.
+### Non-Deep Learning Models
 
-## Features
-* Accurate classification of news images into violence, porn, and normal categories.
-* Used transfer learning to train a deep learning model.
-* Compared deep learning and non-deep learning models (Random Forest, Decision Tree) to determine which model is more effective.
+### Random Forest
+### SVM
+To avoid the bottle neck of being able to train the model on a small dataset, a SVM (Support Vector Machine) model was trained. The PyTorch implementation of SVM was used to be able to use the whole dataset to train the model.
+
+But due to the high dimensionality of the image data, the SVM model was not able to perform well. The model was able to achieve an accuracy of 40% on the test set. This is because SVMs are linear classifiers and are not able to capture non-linear relationships in the data. This is where deep learning models come in handy.
+
+Following are the steps to run the code and train a SVM model:
+
+**1. Create a new conda environment and activate it:** 
+```
+conda create --name cv python=3.8
+conda activate cv
+```
+**2. Install python package requirements:** 
+```
+pip install -r requirements.txt 
+```
+
+**3. Tweak the model parameters [OPTIONAL]:** 
+```
+nano scripts/svm_config.json
+```
+
+**4. Run the training script:** 
+```
+python scripts/svm_training.py
+```
+&nbsp;
+### Deep Learning Models
+### VGG
+A VGG19 model was trained on the dataset. Transfer learning was performed on the model in 2 ways:
+- Case 1: VGG19_bn with all layers trainable
+- Case 2: VGG19_bn with just the last fully connected layer trainable
+
+The model was trained for 10 epochs in both the cases and the training and validation loss and accuracy were plotted. The model in case 1 was able to achieve an accuracy of 74% on the test set while the model in case 2 achieved 89%.
+
+Following are the steps to run the code and train a VGG model:
+
+**1. Create a new conda environment and activate it:** 
+```
+conda create --name cv python=3.8
+conda activate cv
+```
+**2. Install python package requirements:** 
+```
+pip install -r requirements.txt 
+```
+
+**3. Tweak the model parameters [OPTIONAL]:** 
+```
+nano scripts/vgg_config.json
+```
+
+**4. Run the training script:** 
+```
+python scripts/vgg_transfer_learning.py
+```
+### Resnet
+
+The SOTA model in image classification - Resnet was trained on the dataset in the following variations:
+- Case 1: Resnet18 with all layers trainable
+- Case 2: Resnet18 with just the last fully connected layer trainable
+- Case 3: Resnet50 with all layers trainable
+- Case 4: Resnet50 with just the last fully connected layer trainable
+- Case 5: Resnet152 with all layers trainable
+- Case 6: Resnet152 with just the last fully connected layer trainable
+
+We trained three models for comparison. We started with a simple image classifier - Resnet18. The labelled images were split into train and test datasets and loaded in Pytorch Dataset Objects. A pretrained Resnet18 model was loaded and its fully connected head was stripped off to perform transfer learning. The new trasnfer learned resnet takes in input images of size 640x640 and gives the predicted probability of presence of each class in the image.
+
+The results of the model were as follows:
+| Model     | Mode             | Accuracy (Test) |
+| --------- | ---------------- | :-------------: |
+| Resnet18  | Train all layers | 85%             |
+| Resnet18  | Train FC layer   | 84%             |
+| Resnet50  | Train all layers | 87%             |
+| Resnet50  | Train FC layer   | 88%             |
+| Resnet152 | Train all layers | 89%             |
+| Resnet152 | Train FC layer   | 91%             |
+
+Following are the steps to run the code and train a Resnet model:
+
+**1. Create a new conda environment and activate it:** 
+```
+conda create --name cv python=3.8
+conda activate cv
+```
+**2. Install python package requirements:** 
+```
+pip install -r requirements.txt 
+```
+
+**3. Tweak the model parameters [OPTIONAL]:** 
+```
+nano scripts/resnet_config.json
+```
+
+**4. Run the training script:** 
+```
+python scripts/resnet_transfer_learning.py
+```
+
+
+## Content Moderation Application (Streamlit):
+* Refer to the [README.md](https://github.com/guptashrey/spread-of-airborne-diseases/blob/st/README.md) at this link to run the streamlit based web application or access it [here]().
+* You can find the code for the stremalit web-app [here](https://github.com/guptashrey/spread-of-airborne-diseases/tree/st)
 
 ## Conclusion
 After comparison, the deep learning has better performance in image classification. We believe that our content moderation solution will help create a safer and more enjoyable online environment for social media users. By removing violent and pornographic content, we aim to create a space where people can comfortably share and consume news without fear of being exposed to inappropriate material.
-
-
