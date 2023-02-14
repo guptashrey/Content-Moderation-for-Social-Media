@@ -168,8 +168,8 @@ python scripts/resnet_transfer_learning.py
 
 
 ## Content Moderation Application (Streamlit):
-* Refer to the [README.md](https://github.com/guptashrey/spread-of-airborne-diseases/blob/st/README.md) at this link to run the streamlit based web application or access it [here]().
-* You can find the code for the stremalit web-app [here](https://github.com/guptashrey/spread-of-airborne-diseases/tree/st)
+* Refer to the [README.md](https://github.com/guptashrey/Content-Moderation-for-Social-Media/blob/st/README.md) at this link to run the streamlit based web application or access it [here](https://guptashrey-content-moderation-for-1--content-moderation-5y11hh.streamlit.app/).
+* You can find the code for the stremalit web-app [here](https://github.com/guptashrey/Content-Moderation-for-Social-Media/tree/st)
 
 ## Conclusion
 After comparison, the deep learning has better performance in image classification. We believe that our content moderation solution will help create a safer and more enjoyable online environment for social media users. By removing violent and pornographic content, we aim to create a space where people can comfortably share and consume news without fear of being exposed to inappropriate material.
