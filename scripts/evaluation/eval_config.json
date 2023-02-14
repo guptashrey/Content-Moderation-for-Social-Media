@@ -1,7 +1,6 @@
 {
     "model_type": "svm",
-    "data_dir": "../../images",
-    "orig_data_dir": "../data/images",
+    "orig_data_dir": "../../data/images",
     "model_dir": "../models/svm.pt",
     "train_perc": 0.5,
     "val_perc": 0.25,
