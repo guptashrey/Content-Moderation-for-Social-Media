@@ -15,18 +15,18 @@ We identified three key image datasets that we believe will be beneficial in mod
 The NSFW images dataset used was collected from the [
 EBazarov/nsfw_data_source_url](https://github.com/EBazarov/nsfw_data_source_urls) github repository. The repository contains links to 1,589,331 NSFW images across 159 different categories.
 
-We wrote a python script to sample 10,000 image urls from this dataset and download the images. The script can be found in the `scripts` folder. The images were downloaded into the `data/images/nsfw` folder. As the images were large in size, we compressed them into a zip file and uploaded it to Box drive which can be accessed [here]().
+We wrote a python script to sample 10,000 image urls from this dataset and download the images. The script can be found in the `scripts` folder. The images were downloaded into the `data/images/nsfw` folder. As the images were large in size, we compressed them into a zip file and uploaded it to Box drive which can be accessed [here](https://duke.box.com/shared/static/81jx04bwnct82prwqh5ikm6xq9h8ey3t.zip).
 
 ### Neutral Images Data
 The NSFW images dataset used was collected from the [
 alex000kim/nsfw_data_scraper](https://github.com/alex000kim/nsfw_data_scraper) github repository. The repository contains links to 36,837 neutral images across different categories.
 
-We wrote a python script to download all these images. The script can be found in the `scripts` folder. The images were downloaded into the `data/images/neutral` folder. As the images were large in size, we compressed them into a zip file and uploaded it to Box drive which can be accessed [here]().
+We wrote a python script to download all these images. The script can be found in the `scripts` folder. The images were downloaded into the `data/images/neutral` folder. As the images were large in size, we compressed them into a zip file and uploaded it to Box drive which can be accessed [here](https://duke.box.com/shared/static/xg0790jdcsk6mfbgpw59tqk0ym6sq9mf.zip).
 
 ### Violence Images Data
 The violence images dataset used was collected manually using the [Google Images](https://images.google.com/) search engine. We searched for specific keywords such as agression, assault, hostility, riot, mob lynching etc. and downloaded the results using the Chrome Browser extension Fatkun.
 
-As the images were large in size, we compressed them into a zip file and uploaded it to Box drive which can be accessed [here]().
+As the images were large in size, we compressed them into a zip file and uploaded it to Box drive which can be accessed [here](https://duke.box.com/shared/static/g87440yf6v4pun482mcvon3kiloe758w.zip).
 
 ### Accessing the Data
 As mentioned, the dataset used for training the models is uploaded to a Box drive. Feel free to use the links above. In case, you are unable to access them, please email Shrey Gupta at s.gupta[AT]duke[DOT]edu with your name and reason for accessing the data and we will be happy to provide access.
