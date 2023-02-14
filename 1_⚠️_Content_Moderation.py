@@ -18,7 +18,7 @@ def run_ui():
     st.sidebar.write("This ease of access to visual content has also led to an increase in the spread of inappropriate, violent, and pornographic images. These types of images can be harmful and traumatizing for those who come across them, particularly children and young people.")
     st.sidebar.write("By filtering out inappropriate, violent, and pornographic images, digital platforms can create a safer and more inclusive environment for all users. Moderating these types of images can also help prevent the spread of harmful beliefs and legal consequences for platform operators.")
 
-    image_upload = st.file_uploader("Upload an image", type="jpg")
+    image_upload = st.file_uploader("Upload an image", type=['jpg', 'jpeg', 'png'])
 
     col1, col2, col3 = st.columns((3,3,3))
 

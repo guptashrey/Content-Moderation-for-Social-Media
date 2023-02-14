@@ -5,7 +5,7 @@ import urllib.request
 import os
 
 if not os.path.isfile('./models/best_model.pt'):
-    urllib.request.urlretrieve("https://duke.box.com/shared/static/qxg2rputsvocejjd9ljm4dlzfiouq3y5.pt", "./models/best_model.pt")
+    urllib.request.urlretrieve("https://duke.box.com/shared/static/tp7v5a805pa6nxswktr48dwvkdp4p3c2.pt", "./models/best_model.pt")
 
 model = torch.load('./models/best_model.pt', map_location=torch.device('cpu'))
 model.eval()
