@@ -1,8 +1,7 @@
 {
     "pretrained_model_to_use": "resnet18",
     "freeze_pretrained_model": true,
-    "data_dir": "../../../images",
-    "orig_data_dir": "../../data/images",
+    "data_dir": "../../data/images",
     "model_dir": "../../models/temp_resnet.pt",
     "train_perc": 0.5,
     "val_perc": 0.25,
