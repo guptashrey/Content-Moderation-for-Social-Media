@@ -43,21 +43,36 @@ This script can be found in the `scripts` folder.
 The project data and codes are arranged in the following manner:
 
 ```
-├── README.md               <- description of project and how to set up and run it
-├── requirements.txt        <- requirements file to document dependencies
-├── setup.py                <- script to set up project (get data, build features, train model)
-├── main.py [or main.ipynb] <- main script/notebook to run project / user interface
-├── scripts                 <- directory for pipeline scripts or utility scripts
-    ├── make_dataset.py     <- script to get data
-    ├── build_features.py   <- script to run pipeline to generate features 
-    ├── model.py            <- script to train model and predict
-├── models                  <- directory for trained models
-├── data                    <- directory for project data
-    ├── raw                 <- directory for raw data or script to download
-    ├── processed           <- directory to store processed data
-    ├── outputs             <- directory to store any output data
-├── notebooks               <- directory to store any exploration notebooks used
-├── .gitignore              <- git ignore file
+├── README.md                           <- description of project and how to set up and run it
+├── requirements.txt                    <- requirements file to document dependencies
+├── scripts                             <- directory for data processing, modelling and utility scripts
+    ├── dataset
+        ├── make_dataset.py             <- script to get data
+        ├── optimize_dataset.py         <- script to check if the images are corrupt and save them at 80% quality
+    ├── evaluation
+        ├── eval_config.json
+        ├── eval.py
+        ├── eval_helper_functions.py
+    ├── resnet                          <- script to train model and predict
+        ├── resnet_config.json
+        ├── resnet_helper_functions.py
+        ├── resnet_transfer_learning.py
+    ├── vgg
+        ├── vgg_config.json
+        ├── vgg_helper_functions.py
+        ├── vgg_transfer_learning.py
+    ├── svm                             <- script to train model and predict
+        ├── svm_config.json
+        ├── svm_helper_functions.py
+        ├── svm_training.py.py
+├── models                              <- directory for trained models
+├── data                                <- directory for project data
+    ├── raw                             <- directory for raw data or script to download
+    ├── processed                       <- directory to store processed data
+    ├── outputs                         <- directory to store any output data
+├── scratch                             <- directory to store any intermediate and scratch files used
+├── notebooks                           <- directory to store any exploration notebooks used
+├── .gitignore                          <- git ignore file
 ```
 
 &nbsp;
@@ -170,6 +185,3 @@ python scripts/resnet_transfer_learning.py
 ## Content Moderation Application (Streamlit):
 * Refer to the [README.md](https://github.com/guptashrey/Content-Moderation-for-Social-Media/blob/st/README.md) at this link to run the streamlit based web application or access it [here](https://guptashrey-content-moderation-for-1--content-moderation-5y11hh.streamlit.app/).
 * You can find the code for the stremalit web-app [here](https://github.com/guptashrey/Content-Moderation-for-Social-Media/tree/st)
-
-## Conclusion
-After comparison, the deep learning has better performance in image classification. We believe that our content moderation solution will help create a safer and more enjoyable online environment for social media users. By removing violent and pornographic content, we aim to create a space where people can comfortably share and consume news without fear of being exposed to inappropriate material.
