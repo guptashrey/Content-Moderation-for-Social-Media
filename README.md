@@ -80,7 +80,6 @@ The project data and codes are arranged in the following manner:
 A non deep learning and a deep learning modelling approach were used to accurately identify and categorize social media images based on their content. The non deep learning approach used Random Forest and SVM models whereas the deep learning approach used VGG and Resnet model architectures.
 ### Non-Deep Learning Models
 
-### Random Forest
 ### SVM
 To avoid the bottle neck of being able to train the model on a small dataset, a SVM (Support Vector Machine) model was trained. The PyTorch implementation of SVM was used to be able to use the whole dataset to train the model.
 
