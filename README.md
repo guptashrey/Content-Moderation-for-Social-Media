@@ -37,7 +37,25 @@ Once the images were downloaded using the URLs, we wrote a python script to do t
 - Remove duplicate images
 - Resave the images after optimizing the quality to 80%
 
-This script can be found in the `scripts` folder.
+The processed data on which the models were trained can either be downloaded directly using the links above or the scripts to download and optimize the dataset can be found in the `scripts` folder and can be run as follows:
+
+**1. Create a new conda environment and activate it:** 
+```
+conda create --name cv python=3.8
+conda activate cv
+```
+**2. Install python package requirements:** 
+```
+pip install -r requirements.txt 
+```
+**3. Run the data download script:** 
+```
+python scripts/dataset/make_dataset.py
+```
+**4. Run the data optimize script:** 
+```
+python scripts/dataset/optimize_dataset.py
+```
 
 ## Project Structure
 The project data and codes are arranged in the following manner:
@@ -99,12 +117,12 @@ pip install -r requirements.txt
 
 **3. Tweak the model parameters [OPTIONAL]:** 
 ```
-nano scripts/svm_config.json
+nano scripts/svm/svm_config.json
 ```
 
 **4. Run the training script:** 
 ```
-python scripts/svm_training.py
+python scripts/svm/svm_training.py
 ```
 &nbsp;
 ### Deep Learning Models
@@ -129,12 +147,12 @@ pip install -r requirements.txt
 
 **3. Tweak the model parameters [OPTIONAL]:** 
 ```
-nano scripts/vgg_config.json
+nano scripts/vgg/vgg_config.json
 ```
 
 **4. Run the training script:** 
 ```
-python scripts/vgg_transfer_learning.py
+python scripts/vgg/vgg_transfer_learning.py
 ```
 ### Resnet
 
@@ -172,12 +190,12 @@ pip install -r requirements.txt
 
 **3. Tweak the model parameters [OPTIONAL]:** 
 ```
-nano scripts/resnet_config.json
+nano scripts/resnet/resnet_config.json
 ```
 
 **4. Run the training script:** 
 ```
-python scripts/resnet_transfer_learning.py
+python scripts/resnet/resnet_transfer_learning.py
 ```
 
 
